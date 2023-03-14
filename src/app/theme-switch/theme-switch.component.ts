@@ -1,13 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, Inject, Self } from '@angular/core';
 
-export enum ThemeClass {
-  Dark = 'dark-theme',
-}
-export enum Theme {
+enum ThemeOptions {
   Light = 'light',
   Dark = 'dark',
+  Lime = 'lime',
 }
+const themeOptions = ['light', 'dark', 'lime'];
 
 @Component({
   selector: 'app-theme-switch',
@@ -16,23 +15,20 @@ export enum Theme {
 })
 export class ThemeSwitchComponent {
 
-  public readonly Theme = Theme;
+  public readonly themeOptions = Object.values(ThemeOptions);
 
-  public theme: Theme;
+  public theme: ThemeOptions;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-    this.theme = this.document.documentElement.classList.contains(ThemeClass.Dark)
-      ? Theme.Dark
-      : Theme.Light;
+    this.theme = this.themeOptions.find((theme: string) => this.document.documentElement.classList.contains(`${theme}-theme`)) || ThemeOptions.Light;
   }
 
-  public selectLightTheme(): void {
-    this.document.documentElement.classList.remove(ThemeClass.Dark);
-    this.theme = Theme.Light;
-  }
-
-  public selectDarkTheme(): void {
-    this.document.documentElement.classList.add(ThemeClass.Dark);
-    this.theme = Theme.Dark;
+  public selectTheme(newTheme: ThemeOptions): void {
+    if (!themeOptions.includes(newTheme)) {
+      newTheme = ThemeOptions.Light;
+    }
+    themeOptions.forEach((theme: string) => this.document.documentElement.classList.remove(`${theme}-theme`));
+    this.document.documentElement.classList.add(`${newTheme}-theme`);
+    this.theme = newTheme;
   }
 }

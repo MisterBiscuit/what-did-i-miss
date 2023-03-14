@@ -1,3 +1,12 @@
-<app-theme-switch></app-theme-switch>
+<mat-toolbar>
+  <button mat-icon-button aria-label="Menu button">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>What did I miss</span>
+  <button mat-raised-button aria-label="Link to sample page" (click)="goTo('/sample')">Sample</button>
+  <button mat-raised-button aria-label="Link to teapot page" (click)="goTo('/teapot')">Teapot</button>
+  <span class="example-spacer"></span>
+  <app-theme-switch></app-theme-switch>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

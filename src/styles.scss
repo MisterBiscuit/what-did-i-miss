@@ -17,21 +17,44 @@ $dark-app-theme: mat-dark-theme((
   )
 ));
 
-@mixin body-theme($theme) {
-  $_background: map-get($theme, background);
-  $app-background-color: mat-color($_background, background);
+$lime-app-theme: mat-dark-theme((
+  color: (
+    primary: mat-palette($mat-lime),
+    accent: mat-palette($mat-cyan, 200, 100, 400),
+    warn: mat-palette($mat-purple),
+  )
+));
 
-  body {
-    background-color: $app-background-color;
-  }
+@mixin theme-colors($theme) {
+  $_background: map-get($theme, background);
+  $_foreground: map-get($theme, foreground);
+  $_primary: map-get($theme, primary);
+  $background-color: mat-color($_background, background);
+  $foreground-color: mat-color($_foreground, text);
+  $primary-color: mat-color($_primary);
+  --app-background-color: #{$background-color};
+  --app-background-dark-color: #{darken($background-color, 10%)};
+  --app-foreground-color: #{$foreground-color};
+  --app-primary-color: #{$primary-color};
 }
 
-@include angular-material-theme($light-app-theme);
-@include body-theme($light-app-theme);
+:root {
+  @include angular-material-color($light-app-theme);
+  @include theme-colors($light-app-theme);
+}
 
 .dark-theme {
   @include angular-material-color($dark-app-theme);
-  @include body-theme($dark-app-theme);
+  @include theme-colors($dark-app-theme);
+}
+
+.lime-theme {
+  @include angular-material-color($lime-app-theme);
+  @include theme-colors($lime-app-theme);
+}
+
+body {
+  background-color: var(--app-background-color);
 }
 
 /* You can add global styles to this file, and also import other style files */

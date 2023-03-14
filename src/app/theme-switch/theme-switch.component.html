@@ -1,4 +1,5 @@
 <mat-button-toggle-group name="theme" aria-label="Theme selection" [value]="theme">
-  <mat-button-toggle [value]="Theme.Light" (click)="selectLightTheme()">Light</mat-button-toggle>
-  <mat-button-toggle [value]="Theme.Dark" (click)="selectDarkTheme()">Dark</mat-button-toggle>
+  <mat-button-toggle *ngFor="let theme of themeOptions" [value]="theme" (click)="selectTheme(theme)">
+    {{ theme | titlecase }}
+  </mat-button-toggle>
 </mat-button-toggle-group>
