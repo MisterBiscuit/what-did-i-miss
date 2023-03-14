@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="menu" aria-label="Main menu button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let menuItem of menuOptions"
+            (click)="goTo(menuItem.path)">
+      {{ menuItem.label }}
+    </button>
+  </mat-menu>
+
+  <span>What did I miss</span>
+  
+  <span class="example-spacer"></span>
+
+  <app-theme-switch></app-theme-switch>
+</mat-toolbar>

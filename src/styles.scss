@@ -17,9 +17,17 @@ $dark-app-theme: mat-dark-theme((
   )
 ));
 
-$lime-app-theme: mat-dark-theme((
+$dark-lime-app-theme: mat-dark-theme((
   color: (
     primary: mat-palette($mat-lime),
+    accent: mat-palette($mat-cyan, 200, 100, 400),
+    warn: mat-palette($mat-purple),
+  )
+));
+
+$light-lime-app-theme: mat-light-theme((
+  color: (
+    primary: mat-palette($mat-lime, 600, 500, 800),
     accent: mat-palette($mat-cyan, 200, 100, 400),
     warn: mat-palette($mat-purple),
   )
@@ -48,9 +56,14 @@ $lime-app-theme: mat-dark-theme((
   @include theme-colors($dark-app-theme);
 }
 
-.lime-theme {
-  @include angular-material-color($lime-app-theme);
-  @include theme-colors($lime-app-theme);
+.dark-lime-theme {
+  @include angular-material-color($dark-lime-app-theme);
+  @include theme-colors($dark-lime-app-theme);
+}
+
+.light-lime-theme {
+  @include angular-material-color($light-lime-app-theme);
+  @include theme-colors($light-lime-app-theme);
 }
 
 body {

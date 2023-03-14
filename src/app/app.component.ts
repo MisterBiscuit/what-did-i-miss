@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public readonly title = 'WhatDidIMiss';
-
-  constructor(private readonly router: Router) {
-  }
-
-  public goTo(url: string): void {
-    this.router.navigateByUrl(url);
-  }
+  public readonly title = 'What did I miss';
 }

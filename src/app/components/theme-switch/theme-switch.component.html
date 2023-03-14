@@ -1,0 +1,12 @@
+<button mat-button [matMenuTriggerFor]="menu" aria-label="Theme menu button">
+  <mat-icon>contrast</mat-icon>
+  {{ (themingService.currentTheme | async)?.label }}
+  <mat-icon>expand_more</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let theme of themeOptions"
+          (click)="selectTheme(theme)">
+    {{ theme.label }}
+  </button>
+</mat-menu>

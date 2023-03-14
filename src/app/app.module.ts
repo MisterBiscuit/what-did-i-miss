@@ -1,35 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './material.module';
 
-import { SampleComponent } from './sample/sample.component';
-import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
-import { TeapotComponent } from './teapot/teapot.component';
+import { ComponentsModule } from './components/components.module';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SampleComponent,
-    ThemeSwitchComponent,
-    TeapotComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCardModule,
-    MatIconModule,
-    MatToolbarModule,
+    MaterialModule,
+    ComponentsModule,
+    PagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

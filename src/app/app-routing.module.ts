@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SampleComponent } from './sample/sample.component';
-import { TeapotComponent } from './teapot/teapot.component';
+import { SampleComponent } from './pages/sample/sample.component';
+import { TeapotComponent } from './pages/teapot/teapot.component';
 
 const routes: Routes = [
   { path: 'sample', component: SampleComponent },
