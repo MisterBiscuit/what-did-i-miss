@@ -1,35 +1,35 @@
-@import '~@angular/material/theming';
-@include mat-core();
+@use '~@angular/material' as mat;
+@include mat.core();
 
-$light-app-theme: mat-light-theme((
+$light-app-theme: mat.define-light-theme((
   color: (
-    primary: mat-palette($mat-indigo),
-    accent: mat-palette($mat-pink, A200, A100, A400),
-    warn: mat-palette($mat-red),
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$pink-palette, A200, A100, A400),
+    warn: mat.define-palette(mat.$red-palette),
   )
 ));
 
-$dark-app-theme: mat-dark-theme((
+$dark-app-theme: mat.define-dark-theme((
   color: (
-    primary: mat-palette($mat-cyan),
-    accent: mat-palette($mat-blue-gray, A200, A100, A400),
-    warn: mat-palette($mat-amber),
+    primary: mat.define-palette(mat.$cyan-palette),
+    accent: mat.define-palette(mat.$blue-gray-palette, A200, A100, A400),
+    warn: mat.define-palette(mat.$amber-palette),
   )
 ));
 
-$dark-lime-app-theme: mat-dark-theme((
+$dark-lime-app-theme: mat.define-dark-theme((
   color: (
-    primary: mat-palette($mat-lime),
-    accent: mat-palette($mat-cyan, 200, 100, 400),
-    warn: mat-palette($mat-purple),
+    primary: mat.define-palette(mat.$lime-palette),
+    accent: mat.define-palette(mat.$cyan-palette, 200, 100, 400),
+    warn: mat.define-palette(mat.$purple-palette),
   )
 ));
 
-$light-lime-app-theme: mat-light-theme((
+$light-lime-app-theme: mat.define-light-theme((
   color: (
-    primary: mat-palette($mat-lime, 600, 500, 800),
-    accent: mat-palette($mat-cyan, 200, 100, 400),
-    warn: mat-palette($mat-purple),
+    primary: mat.define-palette(mat.$lime-palette, 600, 500, 800),
+    accent: mat.define-palette(mat.$cyan-palette, 200, 100, 400),
+    warn: mat.define-palette(mat.$purple-palette),
   )
 ));
 
@@ -37,9 +37,9 @@ $light-lime-app-theme: mat-light-theme((
   $_background: map-get($theme, background);
   $_foreground: map-get($theme, foreground);
   $_primary: map-get($theme, primary);
-  $background-color: mat-color($_background, background);
-  $foreground-color: mat-color($_foreground, text);
-  $primary-color: mat-color($_primary);
+  $background-color: mat.get-color-from-palette($_background, background);
+  $foreground-color: mat.get-color-from-palette($_foreground, text);
+  $primary-color: mat.get-color-from-palette($_primary);
   --app-background-color: #{$background-color};
   --app-background-dark-color: #{darken($background-color, 10%)};
   --app-foreground-color: #{$foreground-color};
@@ -47,22 +47,22 @@ $light-lime-app-theme: mat-light-theme((
 }
 
 :root {
-  @include angular-material-color($light-app-theme);
+  @include mat.all-component-colors($light-app-theme);
   @include theme-colors($light-app-theme);
 }
 
 .dark-theme {
-  @include angular-material-color($dark-app-theme);
+  @include mat.all-component-colors($dark-app-theme);
   @include theme-colors($dark-app-theme);
 }
 
 .dark-lime-theme {
-  @include angular-material-color($dark-lime-app-theme);
+  @include mat.all-component-colors($dark-lime-app-theme);
   @include theme-colors($dark-lime-app-theme);
 }
 
 .light-lime-theme {
-  @include angular-material-color($light-lime-app-theme);
+  @include mat.all-component-colors($light-lime-app-theme);
   @include theme-colors($light-lime-app-theme);
 }
 
